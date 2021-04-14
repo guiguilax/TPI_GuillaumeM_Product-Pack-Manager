@@ -18,12 +18,12 @@
     background: white;
 }
 
-#leftzone {
+#Midzone {
     position: absolute;
-    left: 67%;
+    left: 60%;
     padding: 1em;
     text-align: center;
-    margin-top:7%;
+    margin-top: 1%;
 }
 .tooltip {
     position: relative;
@@ -75,3 +75,42 @@
         box-shadow: 0 5px #666;
         transform: translateY(4px);
     }
+.dropdownghost {
+    display: none;
+    margin-left:45%;
+}
+.Radioelementtype {
+margin-left:18%;
+
+}
+#add_modificateur {
+    display: none;
+}
+/*arrow checkbox*/
+.checkbox {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.label {
+    display: inline-block;
+    margin: 4px 1em 0;
+}
+
+.arrow-button-label {
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+}
+
+.arrow-button:not(:checked) + label {
+    border-top: 1em solid #bb2025;
+}
+
+.arrow-button:checked + label {
+    border-bottom: 1em solid #a3cd3a;
+}
+/*more rule*/
+#Morerulediv {
+    display: none;
+}

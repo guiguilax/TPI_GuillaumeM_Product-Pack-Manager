@@ -11,7 +11,7 @@ namespace Product_Pack_Manager.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Dropdownpacklist.Items.Add("mytest");
         }
     }
 }
