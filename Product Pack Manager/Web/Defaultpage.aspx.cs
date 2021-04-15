@@ -14,5 +14,11 @@ namespace Product_Pack_Manager.Web
             Sql sql = new Sql();
             
         }
+
+        protected void Displaypackbutton_Click(object sender, EventArgs e)
+        {
+            string Selectedpack = Dropdownpacklist.Text;
+            
+        }
     }
 }

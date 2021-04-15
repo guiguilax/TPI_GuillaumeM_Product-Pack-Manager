@@ -5,17 +5,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js" language="javascript" type="text/javascript"></script>
     <link rel="stylesheet" href="css/Main.css"/>
+    <link rel="stylesheet" href="css/Mynetwork.css"/>
+    <script type="text/javascript" src="Script/Node.js"></script>
     <script type="text/javascript" src="Script/DeleteButton.js"></script>
+    <script type="text/javascript" src="Script/NodeNetwork.js"></script>
 </head>
-<body>
-    <form id="form1" runat="server">
+<body onload="starting()">
         <div id="mynetwork"></div>
+    <form id="form1" runat="server">
+        
         <div id="Midzone"> 
             <h1>Element</h1>
-            <asp:DropDownList ID="Dropdownpacklist" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="Dropdownpacklist" runat="server" DataSourceID="Packlist" DataTextField="Nom" DataValueField="Id"></asp:DropDownList>
+            <asp:SqlDataSource ID="Packlist" runat="server" ConnectionString="<%$ ConnectionStrings:vtxClientsConnectionString %>" SelectCommand="PackDefinition_Get" SelectCommandType="StoredProcedure">
+            </asp:SqlDataSource>
             <br/>
-            <asp:Button CssClass="button" ID="Displaypackbutton" runat="server" Text="Display the pack" /> <br />
+            <asp:Button CssClass="button" ID="Displaypackbutton" runat="server" Text="Display the pack" OnClick="Displaypackbutton_Click" /> <br />
             <p>selected element: </p>
             <asp:DropDownList ID="selectedelement" runat="server"></asp:DropDownList>
             <p>Adding element</p>
@@ -26,11 +33,12 @@
                 <asp:ListItem>Hardware</asp:ListItem>
             </asp:RadioButtonList>
 
-            <asp:DropDownList CssClass="dropdownghost" ID="AddingelementPrestation" runat="server"></asp:DropDownList>
-            <asp:DropDownList CssClass="dropdownghost" ID="AddingelementArticles" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="AddingelementPrestation" CssClass="dropdownghost" runat="server"></asp:DropDownList><br />
+            <asp:DropDownList CssClass="dropdownghost" ID="AddingelementArticles" runat="server"></asp:DropDownList><br />
             <asp:DropDownList CssClass="dropdownghost" ID="AddingelementHardware" runat="server"></asp:DropDownList> 
-            
-            
+
+            <br />
+             
             <div class="checkboxes">
                 <p>More rules</p>
                 <input type="checkbox" class="checkbox arrow-button" id="arrowButton" onclick="hiderule()"/>
@@ -112,4 +120,6 @@
         </div>
     </form>
 </body>
+
+
 </html>
