@@ -105,6 +105,15 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.TextBox Maxelement;
 
         /// <summary>
+        /// Use_Existing control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Use_Existing;
+
+        /// <summary>
         /// Usechecker control.
         /// </summary>
         /// <remarks>
@@ -132,49 +141,49 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.TextBox PriorityLevel;
 
         /// <summary>
-        /// RegularExpressionValidator control.
+        /// IgnoreOnInvoice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator;
+        protected global::System.Web.UI.WebControls.CheckBox IgnoreOnInvoice;
 
         /// <summary>
-        /// IgniorineOnInvoice control.
+        /// DisplayItemOnInvoice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox IgniorineOnInvoice;
+        protected global::System.Web.UI.WebControls.CheckBox DisplayItemOnInvoice;
 
         /// <summary>
-        /// test control.
+        /// DisplayPriceOnInvoice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox test;
+        protected global::System.Web.UI.WebControls.CheckBox DisplayPriceOnInvoice;
 
         /// <summary>
-        /// DisplaypriceOnInvoice control.
+        /// DefineOfficialPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox DisplaypriceOnInvoice;
+        protected global::System.Web.UI.WebControls.CheckBox DefineOfficialPrice;
 
         /// <summary>
-        /// TextBox1 control.
+        /// DependOn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox DependOn;
 
         /// <summary>
         /// alwayscreate control.
@@ -265,5 +274,59 @@ namespace Product_Pack_Manager.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button newpackbutton;
+
+        /// <summary>
+        /// Existinglink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Existinglink;
+
+        /// <summary>
+        /// ElementFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ElementFrom;
+
+        /// <summary>
+        /// ElementTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ElementTo;
+
+        /// <summary>
+        /// LinkCondition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LinkCondition;
+
+        /// <summary>
+        /// ActionWhenTrue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ActionWhenTrue;
+
+        /// <summary>
+        /// ActionWhenFalse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ActionWhenFalse;
     }
 }
