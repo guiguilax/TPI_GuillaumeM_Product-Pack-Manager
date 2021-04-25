@@ -2,13 +2,12 @@
 
 namespace Product_Pack_Manager
 {
-    public class Nodemanager
+    public class Linkmanager
     {
         Sql sql = new Sql();
         public string Serealise(string packid)
         {
-            return JsonConvert.SerializeObject(sql.requestnode(packid), Formatting.Indented);
+            return JsonConvert.SerializeObject(sql.requestedge(packid), Formatting.Indented);
         }
     }
 }
-

@@ -47,6 +47,9 @@
       <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
@@ -77,14 +80,20 @@
     <Content Include="Web\css\Main.css" />
     <Content Include="Web\css\Mynetwork.css" />
     <Content Include="Web\Defaultpage.aspx" />
-    <Content Include="Web\Script\DeleteButton.js" />
-    <Content Include="Web\Script\Node.js" />
-    <Content Include="Web\Script\NodeNetwork.js" />
+    <Content Include="Web\Script\Hidescript.js" />
+    <Content Include="Web\Script\Nodeandedge.js" />
+    <Content Include="Web\Script\Visjsconfig.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csharp_backend\Dropdownpack.cs" />
+    <Compile Include="csharp_backend\Elementfrompack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql.cs" />
+    <Compile Include="csharp_backend\Sql.cs" />
+    <Compile Include="Vis_js_generator\Elementclass.cs" />
+    <Compile Include="Vis_js_generator\Linkclass.cs" />
+    <Compile Include="Vis_js_generator\Linkmanager.cs" />
     <Compile Include="Vis_js_generator\Nodemanager.cs" />
+    <Compile Include="Vis_js_generator\writer.cs" />
     <Compile Include="Web\Defaultpage.aspx.cs">
       <DependentUpon>Defaultpage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -102,9 +111,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web\Temp\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

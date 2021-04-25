@@ -1,36 +1,21 @@
 ﻿body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 120%;
-}/*
-#mynetwork {
-    margin: 0px;
-    padding: 0px;
 }
-
-#mynetwork {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    right: 50%;
-    min-height: 100vh;
-    border-right: 1px solid lightgray;
-    background: white;
-}*/
 
 #Midzone {
     position: absolute;
-    left: 52%;
+    left: 59%;
     padding: 1em;
     text-align: center;
     margin-top: 1%;
 }
 #rightzone {
     position: absolute;
-    left: 75%;
-    margin-top: 1%;
-    text-align: center;
+    left: 67%;
     padding: 1em;
+    text-align: center;
+    display: none;
 }
 .tooltip {
     position: relative;
@@ -83,12 +68,12 @@
         transform: translateY(4px);
     }
 .dropdownghost {
-    /*display: none;*/
-    margin-left:45%;
+    display: none;
+    margin-right:45%;
 }
 .Radioelementtype {
-margin-left:18%;
-
+    margin-left: 36%;
+    margin-right: 33%;
 }
 #add_modificateur {
     display: none;
@@ -120,4 +105,40 @@ margin-left:18%;
 /*more rule*/
 #Morerulediv {
     display: none;
+}
+
+
+/*Loading parameter*/
+
+.loader {
+    margin-left: 20%;
+    margin-top:20%;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

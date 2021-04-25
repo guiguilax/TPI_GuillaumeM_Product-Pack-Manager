@@ -1,4 +1,5 @@
-﻿function hidebutton() {
+﻿//hide the delete button
+function hidebutton() {
     var checkBox = document.getElementById("deletecheck");
     var text = document.getElementById("buttondelete");
     if (checkBox.checked == true) {
@@ -7,6 +8,7 @@
         text.style.display = "none";
     }
 }
+//display only one dropdown at the time 
 function Prestationselect() {
     console.log("test");
     var checkBox1 = document.getElementById("Radio1_0");
@@ -33,6 +35,7 @@ function Prestationselect() {
         Hardwarefield.style.display = "none";
     }
 }
+//hide rule for better readability 
 function hiderule() {
     var checkBox = document.getElementById("arrowButton");
     var mydiv = document.getElementById("Morerulediv");
@@ -40,5 +43,17 @@ function hiderule() {
         mydiv.style.display = "block";
     } else {
         mydiv.style.display = "none";
+    }
+}
+//on the press of the button display either element either Link
+function switchright() {
+    var element = document.getElementById("Midzone");
+    var link = document.getElementById("rightzone");
+    if (element.style.display == "block") {
+        element.style.display = "none";
+        link.style.display = "block";
+    } else {
+        link.style.display = "none";
+        element.style.display = "block";
     }
 }

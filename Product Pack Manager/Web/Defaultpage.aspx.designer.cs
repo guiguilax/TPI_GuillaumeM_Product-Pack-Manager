@@ -33,15 +33,6 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.DropDownList Dropdownpacklist;
 
         /// <summary>
-        /// Packlist control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Packlist;
-
-        /// <summary>
         /// Displaypackbutton control.
         /// </summary>
         /// <remarks>
@@ -78,6 +69,15 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.DropDownList AddingelementPrestation;
 
         /// <summary>
+        /// Prestationdropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Prestationdropdown;
+
+        /// <summary>
         /// AddingelementArticles control.
         /// </summary>
         /// <remarks>
@@ -87,6 +87,15 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.DropDownList AddingelementArticles;
 
         /// <summary>
+        /// Articledropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Articledropdown;
+
+        /// <summary>
         /// AddingelementHardware control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,33 @@ namespace Product_Pack_Manager.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList AddingelementHardware;
+
+        /// <summary>
+        /// Hardwaredropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Hardwaredropdown;
+
+        /// <summary>
+        /// Selectionid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Selectionid;
+
+        /// <summary>
+        /// SectionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SectionId;
 
         /// <summary>
         /// Minelement control.
@@ -123,22 +159,22 @@ namespace Product_Pack_Manager.Web
         protected global::System.Web.UI.WebControls.CheckBox Use_Existing;
 
         /// <summary>
-        /// Usechecker control.
+        /// Use_checker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Usechecker;
+        protected global::System.Web.UI.WebControls.CheckBox Use_checker;
 
         /// <summary>
-        /// Usepriority control.
+        /// Use_priority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Usepriority;
+        protected global::System.Web.UI.WebControls.CheckBox Use_priority;
 
         /// <summary>
         /// PriorityLevel control.
@@ -337,5 +373,32 @@ namespace Product_Pack_Manager.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ActionWhenFalse;
+
+        /// <summary>
+        /// Addlink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Addlink;
+
+        /// <summary>
+        /// Modifylink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Modifylink;
+
+        /// <summary>
+        /// deltelink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deltelink;
     }
 }
