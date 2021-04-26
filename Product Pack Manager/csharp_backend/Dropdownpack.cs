@@ -9,10 +9,10 @@ namespace Product_Pack_Manager
 
         public Dropdownpack(int id, int typeprestation, DateTime validfrom, DateTime validuntil, string nom, string label, int typepack) 
         {
-            //si result 1 et 2 sont a 1 alors le pack n'est pas expiré
+            //if result 1 and 2 == 1 then the pack isn't expire
             DateTime today = DateTime.Now;
-            int result1 = DateTime.Compare(today, validfrom); // = 1 si today est après a validfrom
-            int result2 = DateTime.Compare(validuntil, today);  // = 1 si today est avent validuntil
+            int result1 = DateTime.Compare(today, validfrom); // = 1 if today is after validfrom
+            int result2 = DateTime.Compare(validuntil, today);  // = 1 if today is before validuntil
             if (result1 == 1 && result2 == 1)
             {
                 IdandName = nom + " (" + id + ") " + validfrom.Date.ToString("dd.MM.yyyy");

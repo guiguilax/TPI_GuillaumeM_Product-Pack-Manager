@@ -2,7 +2,7 @@
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 120%;
 }
-
+/*Element div*/
 #Midzone {
     position: absolute;
     left: 59%;
@@ -10,6 +10,7 @@
     text-align: center;
     margin-top: 1%;
 }
+/*link div*/
 #rightzone {
     position: absolute;
     left: 67%;
@@ -102,7 +103,7 @@
 .arrow-button:checked + label {
     border-bottom: 1em solid #a3cd3a;
 }
-/*more rule*/
+/*hiding more rule*/
 #Morerulediv {
     display: none;
 }

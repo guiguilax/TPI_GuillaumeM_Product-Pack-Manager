@@ -22,11 +22,10 @@ namespace Product_Pack_Manager
             cnn = new SqlConnection(connetionString);
             cnn.Open();
         }
-        //récuperation SQL pour crée les nodes et edges de vis.js
-
+        //Sql querry to create node and edge for vis.js
         public List<Elementclass> requestnode(string Packid)
         {
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 var param = new DynamicParameters();
@@ -35,9 +34,10 @@ namespace Product_Pack_Manager
                 
             }
         }
+        //request edges for vis.js
         public List<Linkclass> requestedge(string Packid)
         {
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 var param = new DynamicParameters();
@@ -46,9 +46,10 @@ namespace Product_Pack_Manager
 
             }
         }
+        //request edge for a dropdown list
         public List<Linkclassdropdown> requestedgedropdown(string Packid)
         {
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 var param = new DynamicParameters();
@@ -56,27 +57,22 @@ namespace Product_Pack_Manager
                 return con.Query<Linkclassdropdown>("PackDefinition_Link_GetAll", param: param, commandType: CommandType.StoredProcedure).AsList();
             }
         }
-        //take selected element. user cannot inject sql here 
-        public SqlDataReader selected_element(string idpack)     //TO DO 
-        {
-            sql = "PackDefinition_Element_GetAll @packid =" + idpack + ";";
-            command = new SqlCommand(sql, cnn);
-            dataReader = command.ExecuteReader();
-            return (dataReader);
-        }
+        //make a list of all the pack with id for pack dropdown list
         public List<Dropdownpack> Packlistandid()
         {
             sql = "PackDefinition_Get;";
             return cnn.Query<Dropdownpack>(sql).AsList();
         }
+        //element from selected pack
         public List<Elementfrompack> selectedelement(string idpack)
         {
             sql = "PackDefinition_Element_GetAll @packid =" + idpack + ";";
             return cnn.Query<Elementfrompack>(sql).AsList();
         }
+        //adding an element
         public string addelement(string packid, string SelectionId, string Elementtype, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
         {
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 using (SqlCommand cmd = new SqlCommand("PackDefinition_Element_InsertOrUpdate", con))
@@ -112,12 +108,13 @@ namespace Product_Pack_Manager
                 
             }
         }
+        //modify an element
         public string modifyelement(string packid, string SelectionId, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
         {
             List<Elementidandtype> myidandtype = takeidandtype(Elementid);
             string id = myidandtype[0].Id.ToString();
             string type = myidandtype[0].Type.ToString();
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 using (SqlCommand cmd = new SqlCommand("PackDefinition_Element_InsertOrUpdate", con))
@@ -146,6 +143,7 @@ namespace Product_Pack_Manager
                     }
                     catch (Exception ex)
                     {
+                        //display error as an alert
                         return ex.Message;
                     }
                     return "";
@@ -153,9 +151,10 @@ namespace Product_Pack_Manager
 
             }
         }
+        //delete an element
         public string deleteelement(string packid, string id)
         {
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 using (SqlCommand cmd = new SqlCommand("PackDefinition_Element_Delete", con))
@@ -189,7 +188,7 @@ namespace Product_Pack_Manager
                 whentrue = "";
                 whenfalse = "";
             }
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 using (SqlCommand cmd = new SqlCommand("PackDefinition_Link_InsertOrUpdate", con))
@@ -215,8 +214,10 @@ namespace Product_Pack_Manager
                 }
             }
         }
+        //modify a link
         public string linkmodify(string id, string packid, string condition, string whentrue, string whenfalse)
         {
+            //take the link from and to so the user don't have to reselect it 
             sql = "select IdElementFrom,IdElementTo from Pack_Liaison where id =" + id + ";";
             List<fromtolink> fromandto = cnn.Query<fromtolink>(sql).AsList();
             if (condition == "")
@@ -224,7 +225,7 @@ namespace Product_Pack_Manager
                 whentrue = "";
                 whenfalse = "";
             }
-            //utilisation de dapper pour evité les injection sql
+            //Using dapper to avoid SQL injection
             using (SqlConnection con = new SqlConnection(connetionString))
             {
                 using (SqlCommand cmd = new SqlCommand("PackDefinition_Link_InsertOrUpdate", con))
@@ -250,6 +251,7 @@ namespace Product_Pack_Manager
                 }
             }
         }
+        //delete a link
         public string linkdelete(string id, string packid)
         {
             sql = "PackDefinition_Link_Delete @PackID ="+ packid + ",@ID ="+ id + ";";
@@ -265,15 +267,11 @@ namespace Product_Pack_Manager
             }
             return "";
         }
-
-        public void close()
-        {
-            dataReader.Close();
-            command.Dispose();
-        }
+        //close connection to the DB
         public void end()
         {
             cnn.Close();
+            cnn.Dispose();
         }
     }
 }

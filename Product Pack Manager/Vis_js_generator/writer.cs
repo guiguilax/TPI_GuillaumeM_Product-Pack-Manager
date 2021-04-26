@@ -12,6 +12,7 @@ namespace Product_Pack_Manager
         {
             Nodemanager nodemanager = new Nodemanager();
             Linkmanager linkmanager = new Linkmanager();
+            //create the template
             concate = @"
 var nodes = 
 	{0}
@@ -19,7 +20,9 @@ var nodes =
 var edges = 
 	{1}
 ;";
+            //overwrite file with new data
             System.IO.File.WriteAllText("H:/TPI/Product Pack Manager/Product Pack Manager/Web/Script/Nodeandedge.js", string.Format(concate, nodemanager.Serealise(packid), linkmanager.Serealise(packid)));
         }
+        //H:/TPI/Product Pack Manager/Product Pack Manager/Web/Script/Nodeandedge.js
     }
 }

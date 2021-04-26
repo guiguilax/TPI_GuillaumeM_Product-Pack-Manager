@@ -14,7 +14,7 @@
             }
             if (elementtype == 5)
             {
-                //eleent id is always 0 if elementtype == 5 so we take id ot work with
+                //element id is always 0 if elementtype == 5 so we take id to work with
                 Elementid = id;
                 Elementname = "(empty) id:" + id;
             }

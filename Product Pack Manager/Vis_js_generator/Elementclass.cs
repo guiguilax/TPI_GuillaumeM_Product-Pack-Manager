@@ -15,13 +15,14 @@ namespace Product_Pack_Manager
         [JsonProperty("font")]
         public Font Font;
 
-
         public Elementclass(int id, int packid,string sectionname, int elementtype, int elementid, string elementname, int prioritylevel)
         {
             Font font = new Font();
             Id = id;
             Label = elementname + "\n id " + id + " elementid " + elementid;
             font.Color = "#f4eee8";
+            //give the right color (and text color) to normal node
+            //empty and end node have a name change
             switch (elementtype)
             {
                 case 1:
