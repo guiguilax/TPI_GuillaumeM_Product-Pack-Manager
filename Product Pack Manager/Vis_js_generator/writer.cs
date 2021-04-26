@@ -21,8 +21,7 @@ var edges =
 	{1}
 ;";
             //overwrite file with new data
-            System.IO.File.WriteAllText("H:/TPI/Product Pack Manager/Product Pack Manager/Web/Script/Nodeandedge.js", string.Format(concate, nodemanager.Serealise(packid), linkmanager.Serealise(packid)));
+            System.IO.File.WriteAllText("Web/Script/Nodeandedge.js", string.Format(concate, nodemanager.Serealise(packid), linkmanager.Serealise(packid)));
         }
-        //H:/TPI/Product Pack Manager/Product Pack Manager/Web/Script/Nodeandedge.js
     }
 }
