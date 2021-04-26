@@ -95,8 +95,12 @@ namespace Product_Pack_Manager.Web
             string SelectionId = Selectionid.Text;
             Sql sql = new Sql();
             //sql command to add
-            sql.addelement(Selectedpack, SelectionId, Elementtype, Elementid, Min, Max, Useexisting, Usechecker, Usepriority, Prioritylevel, Ignoreonvoice, Displayitemoninvoice, Displaypriceoninvoice, Defineofficialprice, Dependon);
+            string error = sql.addelement(Selectedpack, SelectionId, Elementtype, Elementid, Min, Max, Useexisting, Usechecker, Usepriority, Prioritylevel, Ignoreonvoice, Displayitemoninvoice, Displaypriceoninvoice, Defineofficialprice, Dependon);
             sql.end();
+            if (error != "") 
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
         }
         //modify element when button pressed
         protected void Modify_Click(object sender, EventArgs e)
@@ -118,8 +122,13 @@ namespace Product_Pack_Manager.Web
 
             //send the sql querry
             Sql sql = new Sql();
-            sql.modifyelement(Selectedpack, SelectionId, Elementid, Min, Max, Useexisting, Usechecker, Usepriority, Prioritylevel, Ignoreonvoice, Displayitemoninvoice, Displaypriceoninvoice, Defineofficialprice, Dependon);
+            string error = sql.modifyelement(Selectedpack, SelectionId, Elementid, Min, Max, Useexisting, Usechecker, Usepriority, Prioritylevel, Ignoreonvoice, Displayitemoninvoice, Displaypriceoninvoice, Defineofficialprice, Dependon);
             sql.end();
+
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
         }
         //delete an element when pressed
         protected void buttondelete_Click(object sender, EventArgs e)
@@ -127,8 +136,12 @@ namespace Product_Pack_Manager.Web
             string Selectedpack = Dropdownpacklist.Text;
             string Elementid = selectedelement.Text;            //POURQUOI SA ME PREND LE PREMIER ET PAS L'ID DU SELECTIONNé
             Sql sql = new Sql();
-            sql.deleteelement(Selectedpack, Elementid);
+            string error = sql.deleteelement(Selectedpack, Elementid);
             sql.end();
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
         }
 
         protected void Addlink_Click(object sender, EventArgs e)
@@ -140,9 +153,12 @@ namespace Product_Pack_Manager.Web
             string actiontrue = ActionWhenTrue.SelectedValue;
             string actionfalse = ActionWhenFalse.SelectedValue;
             Sql sql = new Sql();
-            sql.linkadd(Selectedpack, from, to, condition, actiontrue, actionfalse);
+            string error = sql.linkadd(Selectedpack, from, to, condition, actiontrue, actionfalse);
             sql.end();
-      
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
 
         }
 
@@ -154,8 +170,12 @@ namespace Product_Pack_Manager.Web
             string actiontrue = ActionWhenTrue.SelectedValue;
             string actionfalse = ActionWhenFalse.SelectedValue;
             Sql sql = new Sql();
-            sql.linkmodify(selectedlink, Selectedpack, condition, actiontrue, actionfalse);
+            string error = sql.linkmodify(selectedlink, Selectedpack, condition, actiontrue, actionfalse);
             sql.end();
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
         }
 
         protected void deltelink_Click(object sender, EventArgs e)
@@ -163,8 +183,12 @@ namespace Product_Pack_Manager.Web
             string Selectedpack = Dropdownpacklist.Text;
             string selectedlink = Existinglink.Text;
             Sql sql = new Sql();
-            sql.linkdelete(selectedlink, Selectedpack);
+            string error = sql.linkdelete(selectedlink, Selectedpack);
             sql.end();
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
         }
     }
 }

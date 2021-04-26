@@ -74,7 +74,7 @@ namespace Product_Pack_Manager
             sql = "PackDefinition_Element_GetAll @packid =" + idpack + ";";
             return cnn.Query<Elementfrompack>(sql).AsList();
         }
-        public void addelement(string packid, string SelectionId, string Elementtype, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
+        public string addelement(string packid, string SelectionId, string Elementtype, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
         {
             //utilisation de dapper pour evité les injection sql
             using (SqlConnection con = new SqlConnection(connetionString))
@@ -98,12 +98,21 @@ namespace Product_Pack_Manager
                     cmd.Parameters.AddWithValue("@DefineOfficialPrice", Defineofficialprice);
                     cmd.Parameters.AddWithValue("@DependOn", Dependon);
                     cmd.Parameters.AddWithValue("@Id", DBNull.Value);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
                 }
+                
             }
         }
-        public void modifyelement(string packid, string SelectionId, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
+        public string modifyelement(string packid, string SelectionId, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
         {
             List<Elementidandtype> myidandtype = takeidandtype(Elementid);
             string id = myidandtype[0].Id.ToString();
@@ -130,13 +139,21 @@ namespace Product_Pack_Manager
                     cmd.Parameters.AddWithValue("@DefineOfficialPrice", Defineofficialprice);
                     cmd.Parameters.AddWithValue("@DependOn", Dependon);
                     cmd.Parameters.AddWithValue("@Id", Elementid);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
                 }
 
             }
         }
-        public void deleteelement(string packid, string id)
+        public string deleteelement(string packid, string id)
         {
             //utilisation de dapper pour evité les injection sql
             using (SqlConnection con = new SqlConnection(connetionString))
@@ -146,8 +163,16 @@ namespace Product_Pack_Manager
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@packid", packid);
                     cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
                 }
             }
         }
@@ -157,7 +182,7 @@ namespace Product_Pack_Manager
             sql = "exec PackDefinition_element_get " + id + ";";
             return cnn.Query<Elementidandtype>(sql).AsList();
         }
-        public void linkadd(string packid, string from, string to, string condition, string whentrue, string whenfalse)
+        public string linkadd(string packid, string from, string to, string condition, string whentrue, string whenfalse)
         {
             if (condition == "")
             {
@@ -177,12 +202,20 @@ namespace Product_Pack_Manager
                     cmd.Parameters.AddWithValue("@ActionWhenTrue", whentrue);
                     cmd.Parameters.AddWithValue("@ActionWhenFalse", whenfalse);
                     cmd.Parameters.AddWithValue("@Id", DBNull.Value);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
                 }
             }
         }
-        public void linkmodify(string id, string packid, string condition, string whentrue, string whenfalse)
+        public string linkmodify(string id, string packid, string condition, string whentrue, string whenfalse)
         {
             sql = "select IdElementFrom,IdElementTo from Pack_Liaison where id =" + id + ";";
             List<fromtolink> fromandto = cnn.Query<fromtolink>(sql).AsList();
@@ -204,17 +237,33 @@ namespace Product_Pack_Manager
                     cmd.Parameters.AddWithValue("@ActionWhenTrue", whentrue);
                     cmd.Parameters.AddWithValue("@ActionWhenFalse", whenfalse);
                     cmd.Parameters.AddWithValue("@Id", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
                 }
             }
         }
-        public void linkdelete(string id, string packid)
+        public string linkdelete(string id, string packid)
         {
             sql = "PackDefinition_Link_Delete @PackID ="+ packid + ",@ID ="+ id + ";";
             command = new SqlCommand(sql, cnn);
-            command.ExecuteNonQuery();
-            command.Dispose();
+            try
+            {
+                command.ExecuteNonQuery();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "";
         }
 
         public void close()
