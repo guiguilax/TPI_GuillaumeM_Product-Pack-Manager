@@ -1,23 +1,32 @@
 ﻿body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 120%;
+    margin: 0;
 }
 /*Element div*/
 #Midzone {
     position: absolute;
-    left: 59%;
+    left: 74%;
     padding: 1em;
     text-align: center;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 /*link div*/
 #rightzone {
     position: absolute;
-    left: 67%;
+    left: 82%;
     padding: 1em;
     text-align: center;
     display: none;
 }
+#packdiv {
+    position: absolute;
+    left: 82%;
+    padding: 1em;
+    text-align: center;
+    display: none;
+}
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -143,3 +152,26 @@
         transform: rotate(360deg);
     }
 }
+/*topmenu part*/
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    z-index: -1
+}
+
+
+
+.topbutton {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border: none;
+    background: none;
+}
+    .topbutton:hover {
+        background-color: #008dcb;
+        color: white;
+    }

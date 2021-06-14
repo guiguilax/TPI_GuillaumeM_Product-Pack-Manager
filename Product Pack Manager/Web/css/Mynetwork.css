@@ -6,9 +6,9 @@
 #mynetwork {
     position: fixed;
     left: 0px;
-    top: 0px;
+    top: 46px;
     bottom: 0px;
-    right: 50%;
+    right: 0px;
     min-height: 100vh;
     border-right: 1px solid lightgray;
     background: white;
