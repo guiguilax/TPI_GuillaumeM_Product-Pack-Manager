@@ -468,6 +468,24 @@ var nodes =
     "font": {
       "color": "#114e60"
     }
+  },
+  {
+    "id": 3648,
+    "label": "ADSL2_5M_ank\n id 3648 elementid 493",
+    "color": "#810000",
+    "shape": "box",
+    "font": {
+      "color": "#f4eee8"
+    }
+  },
+  {
+    "id": 3654,
+    "label": "ADSL_SOHO_5000_500*\n id 3654 elementid 26",
+    "color": "#810000",
+    "shape": "box",
+    "font": {
+      "color": "#f4eee8"
+    }
   }
 ]
 ;
@@ -1011,6 +1029,11 @@ var edges =
   {
     "from": 620,
     "to": 95,
+    "label": ""
+  },
+  {
+    "from": 3648,
+    "to": 89,
     "label": ""
   },
   {

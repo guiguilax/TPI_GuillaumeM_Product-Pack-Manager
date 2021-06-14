@@ -69,6 +69,11 @@ namespace Product_Pack_Manager
             sql = "PackDefinition_Element_GetAll @packid =" + idpack + ";";
             return cnn.Query<Elementfrompack>(sql).AsList();
         }
+        public List<Elementparameter> elementdetail(string idpack)
+        {
+            sql = "PackDefinition_Element_Get @id =" + idpack + ";";
+            return cnn.Query<Elementparameter>(sql).AsList();
+        }
         //adding an element
         public string addelement(string packid, string SelectionId, string Elementtype, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
         {

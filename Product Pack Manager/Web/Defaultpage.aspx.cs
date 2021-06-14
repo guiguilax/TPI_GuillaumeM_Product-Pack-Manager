@@ -53,8 +53,6 @@ namespace Product_Pack_Manager.Web
             Existinglink.DataTextField = "Label";
             Existinglink.DataBind();
             sql.end();
-
-
         }
         //to reload js file on every postback
         public int Randomnumber() 
@@ -101,6 +99,8 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
         }
         //modify element when button pressed
         protected void Modify_Click(object sender, EventArgs e)
@@ -129,6 +129,8 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
         }
         //delete an element when pressed
         protected void buttondelete_Click(object sender, EventArgs e)
@@ -142,6 +144,8 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
         }
 
         protected void Addlink_Click(object sender, EventArgs e)
@@ -159,7 +163,8 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
-
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
         }
 
         protected void Modifylink_Click(object sender, EventArgs e)
@@ -176,6 +181,8 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
         }
 
         protected void deltelink_Click(object sender, EventArgs e)
@@ -189,6 +196,16 @@ namespace Product_Pack_Manager.Web
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
             }
+            //update the graphic part
+            Displaypackbutton_Click(sender, e);
+        }
+
+        protected void duplicate_pack(object sender, EventArgs e)
+        {
+            string Selectedpack = Dropdownpacklist.Text;
+            Sql sql = new Sql();
+
+            sql.end();
         }
     }
 }

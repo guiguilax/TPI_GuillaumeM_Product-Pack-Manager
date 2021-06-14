@@ -61,4 +61,22 @@
             },
         });
     });
+    //create modal 
+    network.on("click", function (params) {
+        var nodeID = params.nodes[0];
+        console.log(params.nodes[0]);
+        console.log(nodeID);
+        if (nodeID != undefined)
+        {
+            console.log("ta fait");
+            $('#modifyelementmodal').modal('toggle')
+     
+            var test = $.post({
+                url: "../../PackManager.asmx/Getnodeinfo",
+                contentType: "application/json; charset=utf-8",
+                data: '{ "id": "'+nodeID+'" }'
+            });
+            
+        }
+    });
 }
