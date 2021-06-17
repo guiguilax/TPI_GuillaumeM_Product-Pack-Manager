@@ -21,11 +21,10 @@ namespace Product_Pack_Manager
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 
-        public string Getnodeinfo(string id)
+        public string Getnodeinfo(int id)
         {
             Nodemanager nodemanager = new Nodemanager();
-            nodemanager.nodeparameter(id);
-            return "Hello World" + id.ToString() ;
+            return nodemanager.GetNodeParameter(id);
         }
     }
 }

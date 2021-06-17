@@ -69,10 +69,11 @@ namespace Product_Pack_Manager
             sql = "PackDefinition_Element_GetAll @packid =" + idpack + ";";
             return cnn.Query<Elementfrompack>(sql).AsList();
         }
-        public List<Elementparameter> elementdetail(string idpack)
+        public Elementparameter GetElementDetail(int idelement)
         {
-            sql = "PackDefinition_Element_Get @id =" + idpack + ";";
-            return cnn.Query<Elementparameter>(sql).AsList();
+            DynamicParameters parameter =new DynamicParameters();
+            parameter.Add("@id", idelement);
+            return cnn.QueryFirstOrDefault<Elementparameter>("PackDefinition_Element_Get",parameter, commandType: CommandType.StoredProcedure);
         }
         //adding an element
         public string addelement(string packid, string SelectionId, string Elementtype, string Elementid, string Min, string Max, bool Useexisting, bool Usechecker, bool Usepriority, string Prioritylevel, bool Ignoreonvoice, bool Displayitemoninvoice, bool Displaypriceoninvoice, bool Defineofficialprice, string Dependon)
@@ -271,6 +272,61 @@ namespace Product_Pack_Manager
                 return ex.Message;
             }
             return "";
+        }
+        //outdate a package
+        public string Outdatepack(int ID)
+        {
+            sql = "UPDATE Pack_Definition set ValidUntil = getdate() Where id = " + ID + ";";
+            command = new SqlCommand(sql, cnn);
+            try
+            {
+                command.ExecuteNonQuery();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "";
+        }
+        public string Redatepack(int ID)
+        {
+            sql = "UPDATE Pack_Definition set ValidUntil = cast('31-12-9999 23:59:59.000' AS datetime) Where id = " + ID+";";
+            command = new SqlCommand(sql, cnn);
+            try
+            {
+                command.ExecuteNonQuery();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "";
+        }
+        public string launchDuplicationOfPack(int id,int destinationid)
+        {
+            //Using dapper to avoid SQL injection
+            using (SqlConnection con = new SqlConnection(connetionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Packs_Copy", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idPackToCopy", id);
+                    cmd.Parameters.AddWithValue("@idNewTypePrestation", destinationid);
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();  ///noramlement tt marche, elever le comm pour faire fonctionné
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                    return "";
+                }
+
+            }
         }
         //close connection to the DB
         public void end()

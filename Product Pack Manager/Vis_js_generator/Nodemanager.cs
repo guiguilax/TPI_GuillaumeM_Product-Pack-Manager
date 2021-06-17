@@ -11,14 +11,11 @@ namespace Product_Pack_Manager
         {
             return JsonConvert.SerializeObject(sql.requestnode(packid), Formatting.Indented);
         }
-        public string nodeparameter(string id) 
+        public string GetNodeParameter(int id) 
         {
-            List<Elementparameter> parameterlist;
-            parameterlist = sql.elementdetail(id);
-            
-            string mytest = parameterlist[0].Name;
-            
-            return ';
+            return JsonConvert.SerializeObject(sql.GetElementDetail(id));
+            /////ici tu doit tout mettre dans une seul string et séparé tout dans js avec les espaces
+            //return "£" + parameterlist[0].Name + "£" + parameterlist[0].Categorie + "£" + parameterlist[0].Min + "£" + parameterlist[0].Max + "£" + parameterlist[0].UseExisting + "£" + parameterlist[0].UseChecker + "£" + parameterlist[0].UsePriority + "£" + parameterlist[0].PriorityLevel + "£" + parameterlist[0].IOI + "£" + parameterlist[0].DIOI + "£" + parameterlist[0].DPOI + "£" + parameterlist[0].DOP + "£" + parameterlist[0].DependOn + "£";
         }
     }
 }

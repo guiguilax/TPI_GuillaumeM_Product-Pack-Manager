@@ -68,14 +68,25 @@
         console.log(nodeID);
         if (nodeID != undefined)
         {
-            console.log("ta fait");
-            $('#modifyelementmodal').modal('toggle')
      
-            var test = $.post({
+            var posrtresult = $.post({
                 url: "../../PackManager.asmx/Getnodeinfo",
                 contentType: "application/json; charset=utf-8",
-                data: '{ "id": "'+nodeID+'" }'
-            });
+                data: '{ "id": "' + nodeID + '" }'
+            })
+                .done(function (data) {
+                    $('#modifyelementmodal').modal('toggle')
+                    //alert(data.d);
+                    var parameter = JSON.parse(data.d);
+                    //document.getElementById("displayname").innerHTML = parameter.Name;
+                    $('#displayname').html(parameter.Name);
+                    
+                    //alert(parameter.Name);
+                });/*
+            var answer = posrtresult.responseJSON.d;
+            var separate = answer.split("£");
+            console.log(separate[1]);*/
+            
             
         }
     });

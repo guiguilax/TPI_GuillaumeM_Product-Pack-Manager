@@ -28,7 +28,6 @@
     <button type="button" class="topbutton" data-toggle="modal" data-target="#packmodal">Select a pack</button>
     <button type="button" class="topbutton" data-toggle="modal" data-target="#elementmodal">New element</button>
     <button type="button" class="topbutton" data-toggle="modal" data-target="#linkmodal">New Link</button>
-    <button type="button" class="topbutton" data-toggle="modal" data-target="#modifyelementmodal">teste de mort</button>
 </div>
 <body onload="starting()">
         <div id="mynetwork"></div>
@@ -178,10 +177,10 @@
                 <div class="modal-body">
                     <asp:DropDownList ID="Dropdownpacklist" runat="server"></asp:DropDownList>
                     <br/>
-                    <asp:Button CssClass="button" ID="Displaypackbutton" runat="server" Text="Display the pack" OnClick="Displaypackbutton_Click" OnClientClick="loader()"/> 
-                    <asp:Button CssClass="button" ID="Duplicate" runat="server" Text="Duplicate this pack" OnClick="duplicate_pack" /><br />
-                    <asp:Button CssClass="button" ID="Button1" runat="server" Text="put this pack as outdated" OnClick="duplicate_pack" /><br />
-                    <asp:Button CssClass="button" ID="Button4" runat="server" Text="make this pack usable" OnClick="duplicate_pack" /><br />
+                    <asp:Button CssClass="button" ID="Displaypackbutton" runat="server" Text="Display the pack" OnClick="Displaypackbutton_Click" OnClientClick="loader()"/> <br />
+                    <asp:Button CssClass="button" ID="Duplicate" runat="server" Text="Duplicate this pack" OnClick="duplicate_pack" /> <asp:TextBox ID="target" type="number" placeholder="target pack" runat="server"></asp:TextBox> <br />
+                    <asp:Button CssClass="button" ID="Button1" runat="server" Text="put this pack as outdated" OnClick="Outdate_Click" /><br />
+                    <asp:Button CssClass="button" ID="Button4" runat="server" Text="make this pack usable" OnClick="Redate_Click" /><br />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -234,33 +233,28 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Create a new element</h4>
+              <h4 class="modal-title">Modify an element</h4>
             </div>
             <div class="modal-body">
               <!--element modal content-->
-                <h1>Element</h1>
+                <h1 id="displayname">Nom de l'éléments</h1>
             
-                <p>selected element: 
-                
-                </p>
-                <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
-               
-                
+                <p>Element ID: ID</p>
                 <div id="Moreruledivalway">
                     <p>Element categories</p>
                     <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SectionId" DataTextField="Nom" DataValueField="Id"></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:vtxClientsConnectionString %>" SelectCommand="select * from Pack_ElementCategories"></asp:SqlDataSource>
                     <p>Max and Minumum element</p>
-                    <asp:TextBox ID="TextBox1" runat="server" type="number" placeholder="Minimum"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox1" ClientIDMode="Static" runat="server" type="number" placeholder="Minimum"></asp:TextBox><br />
                     <asp:TextBox ID="TextBox2" runat="server" type="number" placeholder="Maximum"></asp:TextBox><br />
-                    <label>Use Existing:</label><asp:CheckBox ID="CheckBox1" runat="server" /><br />
-                    <label>Use checker:</label><asp:CheckBox ID="CheckBox2" runat="server" /><br />
-                    <label>Use priority:</label><asp:CheckBox ID="CheckBox3" runat="server" /><br />
+                    <label>Use Existing:</label><asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;&nbsp;
+                    <label>Use checker:</label><asp:CheckBox ID="CheckBox2" runat="server" />&nbsp;&nbsp;
+                    <label>Use priority:</label><asp:CheckBox ID="CheckBox3" runat="server" />&nbsp;&nbsp;
                     <p>Priority level</p>
                     <asp:TextBox ID="TextBox3" placeholder="Priority Level" runat="server" type="number" Text="0"></asp:TextBox><br />
-                    <label>Ignore On Invoice:</label><asp:CheckBox ID="CheckBox4" runat="server" /><br />
+                    <label>Ignore On Invoice:</label><asp:CheckBox ID="CheckBox4" runat="server" /> &nbsp;&nbsp;
                     <label>Display Item On Invoice:</label> <asp:CheckBox ID="CheckBox5" runat="server" /><br />
-                    <label>Display Price On Invoice:</label><asp:CheckBox ID="CheckBox6" runat="server" /><br />
+                    <label>Display Price On Invoice:</label><asp:CheckBox ID="CheckBox6" runat="server" /> &nbsp;&nbsp;
                     <label>Define Official Price:</label><asp:CheckBox ID="CheckBox7" runat="server" /><br />
                     <asp:TextBox ID="TextBox4" runat="server" placeholder="DependOn"></asp:TextBox>
                 </div>

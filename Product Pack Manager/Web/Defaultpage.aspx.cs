@@ -21,7 +21,7 @@ namespace Product_Pack_Manager.Web
                 Dropdownpacklist.DataTextField = "IdandName";  
                 Dropdownpacklist.DataBind();
                 sql.end();
-
+                //ici il faudrait cacher network
             }
         }
         //adding element in dropdown 
@@ -32,7 +32,7 @@ namespace Product_Pack_Manager.Web
             List.DataTextField = "Elementname";
             List.DataBind();
         }
-        //take the selected pack and update the nodeandlink.js file  
+        //take the selected pack and update the nodeandlink.js file 
         protected void Displaypackbutton_Click(object sender, EventArgs e)
         {
             //take the pack and create the js file with all the nodes
@@ -53,6 +53,28 @@ namespace Product_Pack_Manager.Web
             Existinglink.DataTextField = "Label";
             Existinglink.DataBind();
             sql.end();
+        }
+        protected void Outdate_Click(object sender, EventArgs e)
+        {
+            Sql sql = new Sql();
+            string error = sql.Outdatepack(int.Parse(Dropdownpacklist.Text));
+            sql.end();
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
+
+        }
+        protected void Redate_Click(object sender, EventArgs e)
+        {
+            Sql sql = new Sql();
+            string error = sql.Redatepack(int.Parse(Dropdownpacklist.Text));
+            sql.end();
+            if (error != "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+            }
+
         }
         //to reload js file on every postback
         public int Randomnumber() 
@@ -202,10 +224,18 @@ namespace Product_Pack_Manager.Web
 
         protected void duplicate_pack(object sender, EventArgs e)
         {
-            string Selectedpack = Dropdownpacklist.Text;
-            Sql sql = new Sql();
-
-            sql.end();
+            int Selectedpack = int.Parse(Dropdownpacklist.Text);
+            int targetpack = int.Parse(target.Text);
+            if (targetpack != 0) 
+            {
+                Sql sql = new Sql();
+                string error = sql.launchDuplicationOfPack(Selectedpack, targetpack);
+                sql.end();
+                if (error != "")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alerte", "alert('" + error + "')", true);
+                }
+            }
         }
     }
 }
